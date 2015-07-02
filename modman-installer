@@ -7,7 +7,11 @@ if [ ! -d "$HOME/bin" ] ; then
         tty -s && . $HOME/.profile
 
         if [[ ":$PATH:" != *":$HOME/bin:"* ]]; then
-            echo -e '\nPATH="$HOME/bin:$PATH"' >> $HOME/.profile
+            if [[ -z $(grep -Pzo 'PATH=.*(\$HOME|~)/bin' $HOME/.profile) ]]; then
+                echo -e '\nPATH="$HOME/bin:$PATH"' >> $HOME/.profile
+            fi
+            
+            PATH="$HOME/bin:$PATH"
         fi
     fi
 fi
