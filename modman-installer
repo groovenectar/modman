@@ -1,27 +1,7 @@
 #!/usr/bin/env bash
 
-if [ ! -d "$HOME/bin" ] ; then
-    mkdir $HOME/bin
-
-    if [ -f $HOME/.profile ]; then
-        if [[ ! ":$PATH:" =~ ":$HOME/bin:" ]]; then
-            tty -s && . $HOME/.profile
-
-            if [[ -z $(grep -Pzo 'PATH=.*(\$HOME|~)/bin' $HOME/.profile) ]]; then
-                echo -e '\nPATH="$HOME/bin:$PATH"' >> $HOME/.profile
-            fi
-
-            echo
-            echo "\$HOME\bin was not found in the current \$PATH. It should be included on the next login."
-            echo
-            echo "Run the following command to make sure it is included in the current session:"
-            echo "export PATH=\"$HOME/bin:\$PATH\""
-        fi
-    fi
-fi
-
 SRC="https://raw.githubusercontent.com/colinmollenhour/modman/master/modman"
-DEST="$HOME/bin/modman"
+DEST="/usr/bin/modman"
 
 # test if curl/wget is installed
 if hash curl 2>&- ; then
