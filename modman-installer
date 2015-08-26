@@ -16,7 +16,3 @@ fi
 $CMD
 
 chmod +x $DEST
-
-echo
-echo "Done. Modman installed in $HOME/bin/modman"
-echo
